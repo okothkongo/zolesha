@@ -10,6 +10,13 @@ defmodule Zolesha.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ],
       deps: deps()
     ]
   end
@@ -43,7 +50,8 @@ defmodule Zolesha.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:phoenix_integration, "~> 0.6", only: :test}
+      {:phoenix_integration, "~> 0.6", only: :test},
+      {:excoveralls, "~> 0.10", only: :test}
     ]
   end
 
