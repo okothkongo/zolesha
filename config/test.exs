@@ -16,3 +16,6 @@ config :zolesha, ZoleshaWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+# phoenix_integration
+config :phoenix_integration,
+  endpoint: Zolesha.Endpoint
