@@ -19,3 +19,8 @@ config :logger, level: :warn
 # phoenix_integration
 config :phoenix_integration,
   endpoint: Zolesha.Endpoint
+
+# wallaby
+config :zolesha, Zolesha.Endpoint, server: true
+config :zolesha, :sql_sandbox, true
+config :wallaby, screenshot_on_failure: true
