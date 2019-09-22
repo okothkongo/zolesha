@@ -43,6 +43,7 @@ jobs:
         command: |
           sudo curl --output /tmp/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1
           sudo chmod ugo+x /tmp/phantomjs
+          sudo chmod 777 /usr/local/bin/phantomjs
           sudo ln -sf /tmp/phantomjs /usr/local/bin/phantomjs
       - run:
           name: Wait for DB
