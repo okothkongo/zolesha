@@ -23,6 +23,11 @@ defmodule ZoleshaWeb.Endpoint do
     plug Phoenix.CodeReloader
   end
 
+  # wallaby
+  if Application.get_env(:zolesha, :sql_sandbox) do
+    plug Phoenix.Ecto.SQL.Sandbox
+  end
+
   plug Plug.RequestId
   plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
 
