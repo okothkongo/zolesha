@@ -38,8 +38,6 @@ jobs:
       - save_cache:
           key: v1-build-cache
           paths: "_build"
-      - restore_cache:
-          key: phantomjs-2-1-1
       - run:
         name: Install 'phantomjs'
         command: |
