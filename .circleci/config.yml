@@ -41,14 +41,13 @@ jobs:
       - save_cache:
           key: v1-build-cache
           paths: "_build" 
+
+      - restore_cache:
+          key: phantomjs-2
           
       - save_cache:
-        key: phantomjs-2
-
-      - save_cache:
-        key: phantomjs-2
-        paths:
-          - /usr/local/bin/phantomjs        
+          key: phantomjs-2
+          paths: /usr/local/bin/phantomjs        
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
