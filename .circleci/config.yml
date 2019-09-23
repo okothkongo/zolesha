@@ -9,12 +9,8 @@ jobs:
         environment:
           POSTGRES_USER: postgres
           POSTGRES_DB: zolesha_test
-          POSTGRES_PASSWORD:
-          
-    working_directory: ~/app
-    - run: cd ..
-    - run: sudo chmod -R 777 app
-    - run: cd app    
+          POSTGRES_PASSWORD:          
+    
     steps:
 
       - checkout:
@@ -43,23 +39,23 @@ jobs:
           paths: "_build" 
       - restore_cache:
           key: phantomjs-2-1-1
+      - restore_cache:
+          key: v1-phantomjs-2.1.1    
+            
       - run:
-          name: Install PhantomJS Dependencies
+          name: Install phantomjs
           command: |
-            [ -f /usr/local/bin/phantomjs ] || sudo apt-get update
-            [ -f /usr/local/bin/phantomjs ] || sudo apt-get install -y fontconfig wget
-      - run:
-          name: Install PhantomJS
-          command: |
-              [ -f /usr/local/bin/phantomjs ] || wget -O /tmp/phantomjs.tar.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
-              [ -f /usr/local/bin/phantomjs ] || tar -xjf /tmp/phantomjs.tar.bz2 -C /tmp
-              [ -f /usr/local/bin/phantomjs ] || sudo mv /tmp/phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs      
-      
+            if ! [ $(which phantomjs) ]; then                
+              sudo curl --output /usr/local/bin/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1
+            fi
+                  
+            sudo chmod ugo+x /usr/local/bin/phantomjs
+
       - save_cache:
-          key: phantomjs-2-1-1
-          paths:
+          key: v1-phantomjs-2.1.1
+          paths:            
             - /usr/local/bin/phantomjs
- 
+      
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
