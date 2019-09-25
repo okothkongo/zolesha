@@ -16,6 +16,16 @@ config :zolesha, ZoleshaWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :sentry,
+  dsn: "https://dbc276c100be433583b7db3cbee176d3@sentry.io/1761279",
+  environment_name: :prod,
+  enable_source_code_context: true,
+  root_source_code_path: File.cwd!,
+  tags: %{
+    env: "production"
+  },
+  included_environments: [:prod]
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

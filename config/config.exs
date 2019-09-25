@@ -25,6 +25,11 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+#Sentry Config
+config :sentry, dsn: Application.get_env(:sentry_setup, :sentry_url),
+  included_environments: ~w(production staging),
+  environment_name: System.get_env("RELEASE_LEVEL") || "development"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

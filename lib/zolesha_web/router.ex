@@ -1,5 +1,7 @@
 defmodule ZoleshaWeb.Router do
   use ZoleshaWeb, :router
+  use Plug.ErrorHandler
+  use Sentry.Plug
 
   pipeline :browser do
     plug :accepts, ["html"]

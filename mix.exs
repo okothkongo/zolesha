@@ -48,12 +48,13 @@ defmodule Zolesha.MixProject do
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
+      {:jason, "~> 1.1"},
       {:plug_cowboy, "~> 2.0"},
       {:phoenix_integration, "~> 0.6", only: :test},
       {:excoveralls, "~> 0.10", only: :test},
       {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
-      {:wallaby, "~> 0.23.0", [runtime: false, only: :test]}
+      {:wallaby, "~> 0.23.0", [runtime: false, only: :test]},
+      {:sentry, "~> 7.0"}
     ]
   end
 
