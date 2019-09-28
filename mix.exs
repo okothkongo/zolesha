@@ -54,7 +54,8 @@ defmodule Zolesha.MixProject do
       {:excoveralls, "~> 0.10", only: :test},
       {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
       {:wallaby, "~> 0.23.0", [runtime: false, only: :test]},
-      {:sentry, "~> 7.0"}
+      {:sentry, "~> 7.0"},
+      {:bcrypt_elixir, "~> 2.0"}
     ]
   end
 
