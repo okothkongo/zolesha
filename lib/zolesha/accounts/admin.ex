@@ -17,6 +17,11 @@ defmodule Zolesha.Accounts.Admin do
     admin
     |> cast(attrs, [:email, :password])
     |> validate_required([:email, :password])
+    |> validate_format(:email, ~r/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/)
+    |> validate_format(
+      :password,
+      ~r/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
+    )
     |> put_pass_hash()
   end
 

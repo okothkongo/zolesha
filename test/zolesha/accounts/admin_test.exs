@@ -22,4 +22,18 @@ defmodule Zolesha.AdminTest do
     assert {:error, changeset} = Accounts.create_admin(%{})
     assert %{email: ["can't be blank"]} = errors_on(changeset)
   end
+
+  test "admin with invalid email pattern not registered" do
+    assert {:error, changeset} =
+             Accounts.create_admin(%{"email" => "jan@.@com", "password" => "Es?U_#%SgY8t*5S#ky+4"})
+
+    assert %{email: ["has invalid format"]} = errors_on(changeset)
+  end
+
+  test "admin with invalid password pattern not registered" do
+    assert {:error, changeset} =
+             Accounts.create_admin(%{"email" => "janedoe@gmail.com", "password" => "111114wwwww"})
+
+    assert %{password: ["has invalid format"]} = errors_on(changeset)
+  end
 end

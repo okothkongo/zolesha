@@ -14,6 +14,5 @@ defmodule Zolesha.Accounts do
     %Admin{}
     |> Admin.changeset(attrs)
     |> Repo.insert()
-    |> IO.inspect()
   end
 end
