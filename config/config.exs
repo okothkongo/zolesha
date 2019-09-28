@@ -25,8 +25,9 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-#Sentry Config
-config :sentry, dsn: Application.get_env(:sentry_setup, :sentry_url),
+# Sentry Config
+config :sentry,
+  dsn: Application.get_env(:sentry_setup, :sentry_url),
   included_environments: ~w(production staging),
   environment_name: System.get_env("RELEASE_LEVEL") || "development"
 
